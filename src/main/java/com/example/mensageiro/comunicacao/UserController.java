@@ -32,11 +32,6 @@ public class UserController {
 	@Autowired
 	private ModelMapper modelMapper;
 	
-	@GetMapping("/")
-	public String RootOn() {
-		return "RestApi 1.0.0 ok!";
-	}
-	
 	@GetMapping("/usuario")
 	public List<Usuario> listarUsuarios(){
 		return usuario.ListarUsuarios();

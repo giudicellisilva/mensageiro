@@ -12,3 +12,4 @@ public interface RepositorioUsuario extends JpaRepository<Usuario, Long> {
 	
 	List<Usuario> findByEnderecoBairro(String bairro);
 }
+    
