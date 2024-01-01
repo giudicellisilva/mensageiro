@@ -37,6 +37,11 @@ public class UserController {
 		return usuario.ListarUsuarios();
 	}
 	
+	@PostMapping("/usuario")
+	public UsuarioResponse salvarUsuario(@RequestBody @Valid UsuarioRequest user) {
+		return new UsuarioResponse(usuario.salvarUsuario(user.convertToEntity()));
+	}
+	
 	@GetMapping("/usuario/{id}")
 	public UsuarioResponse findUsuarioById(@PathVariable Long id) {
 		return new UsuarioResponse(usuario.findUsuarioById(id).get());
