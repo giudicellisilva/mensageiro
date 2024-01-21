@@ -2,11 +2,14 @@ package com.example.mensageiro.negocio.basica;
 
 
 
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -31,7 +34,9 @@ public class Usuario {
 	@ToString.Exclude
 	private Endereco endereco;
 
-
+	@ManyToMany(mappedBy  = "idGrupo")
+	private List<Grupo> grupos;
+	
 	public Usuario(long id, String nome, String email, String telefone, Endereco endereco) {
 		super();
 		this.id = id;

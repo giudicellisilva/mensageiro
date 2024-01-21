@@ -1,14 +1,39 @@
 package com.example.mensageiro.negocio.basica;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import java.util.List;
 
-@Entity
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Entity @Getter @Setter @EqualsAndHashCode(onlyExplicitlyIncluded = true) @NoArgsConstructor
 public class Grupo {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	private String nome;
 
+	public Grupo(long id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+	}
+	
+	@ManyToOne
+	@ToString.Exclude
+	private Usuario administrador;
+	@ManyToMany
+	private List<Usuario> usuarios;
+	
+	
 }
